@@ -9,7 +9,6 @@ import (
 	"net/http"
 	"os"
 	"strings"
-	"time"
 )
 
 // 抓取博客文章url
@@ -44,8 +43,6 @@ func spider() ([]string, error) {
 }
 
 func main() {
-
-	fmt.Println(time.Now().Format("2006-01-02 15:04:05"))
 
 	// 获取资源链接
 	links, err := spider()
