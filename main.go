@@ -77,7 +77,7 @@ func main() {
 		return
 	}
 
-	logFile, err := os.OpenFile("./server.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
+	logFile, err := os.OpenFile("/home/soft/server.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0766)
 	if err != nil {
 		panic(err.Error())
 	}
