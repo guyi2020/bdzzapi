@@ -9,13 +9,14 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 // 抓取博客文章url
 func spider() ([]string, error) {
 
-	url := "http://www.ancientone.cn/wp-json/wp/v2/posts"
-
+	todayTime := time.Now().Format("2006-01-02")
+	url := "http://www.ancientone.cn/wp-json/wp/v2/posts?before=" + todayTime + "T23:59:59&after=" + todayTime + "T00:00:00"
 	client := &http.Client{}
 	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -46,6 +47,10 @@ func main() {
 
 	// 获取资源链接
 	links, err := spider()
+	fmt.Println(links)
+	if links == nil {
+		return
+	}
 
 	if err != nil {
 		fmt.Println(err.Error())
